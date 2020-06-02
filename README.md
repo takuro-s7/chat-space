@@ -61,9 +61,8 @@ Things you may want to cover:
 
 |Column|Type|Options|
 |------|----|-------|
-|body|||
+|body||text|
 |image|string||
-|text|text||
 |user_id|integer|null: false, foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
 
