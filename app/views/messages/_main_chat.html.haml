@@ -1,0 +1,48 @@
+.Main
+  .MainHeader 
+    .MainHeader__box
+      %h2.MainHeader__groupName test 
+      
+      %ul.MainHeader__member
+        - members = ["masa"]  
+        - members.each do |member|
+          %li= "Menber : #{member}"
+    = link_to "Edit", "#", class: :"MainHeader__btn"
+    
+  .MainChat
+    .MainChat__box
+      .MainChat__info
+        .MainChat__infoUser
+          masa
+        .MainChat__infoDate
+          2020/06/04 19:00
+      .MainChat__message
+        
+        .MainChat__messageContent
+          こんにちは
+    .MainChat__box
+      .MainChat__info
+        .MainChat__infoUser
+          masa
+        .MainChat__infoDate
+          2020/06/04 19:00
+      .MainChat__message
+        .MainChat__messageContent
+          こんばんは
+    .MainChat__box
+      .MainChat__info
+        .MainChat__infoUser
+          まい
+        .MainChat__infoDate
+          2020/06/04 19:00
+      .MainChat__message
+        .MainChat__messageContent  
+          おはよう  
+  .MainMessage__form
+    = form_with url: @group_path, class: "MainMessage__formTop", local: true do |form|
+      .MainMessage__formContents
+        = form.text_field :message, placeholder: "type a message", class: "MainMessage__formInput__content" 
+        = form.label :image, class: "MainMessage__formImage" do
+          = icon('far', 'image', class: "MainMessage__formIcon")
+          =form.file_field :image, class:"MainMessage__formFile"
+      = form.submit 'Send', class: "MainMessage__formSubmit"
