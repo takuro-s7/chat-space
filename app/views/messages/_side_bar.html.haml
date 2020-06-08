@@ -1,0 +1,23 @@
+.SidBer
+  .LeftHeader
+    .LeftHeader__list
+      %h3.LeftHeader__UserName 名前
+      %ul.LeftHeader__IconList   
+        %li.LeftHeader__IconEdit
+          = link_to "#" do 
+            = icon('fas', 'edit')
+        %li.LeftHeader__IconCog
+          = link_to "#" do 
+            = icon('fas', 'cog') 
+  .GroupList
+    = link_to "#", class: "Group"  do 
+      %P.GroupName
+        Techcamp   
+      %p.GroupMessage
+        まだメッセージがありません
+    = link_to "#", class: "Group"  do 
+      %P.GroupName
+        棚持ち 
+      %p.GroupMessage
+        まだメッセージがありません   
+         
