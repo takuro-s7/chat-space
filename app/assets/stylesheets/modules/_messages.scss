@@ -51,11 +51,10 @@
   }
   .Group {
     display: block;
-    
-    text-decoration: none;
     box-sizing: border-box;
     padding: 20px 0 40px;
     a {
+      text-decoration: none;
       color: #ffffff;
     }
     &Name {
@@ -95,10 +94,12 @@
     padding: 0 20px;
     margin-top: 28px;
     height: 40px;
-    display: block;
     border: 1px solid #38aef0;
     color: #38aef0;
     line-height: 40px;
+  }
+  a {
+    display: block;
     text-decoration: none;
   }
 }
