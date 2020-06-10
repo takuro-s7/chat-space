@@ -3,40 +3,18 @@
   .RightHeader
     .RightHeader__Group
       .RightHeader__GroupName
-        techcamp
-      %ul.RightHeader__MemberList 
-        Member：
-        %li.RightHeader__Member
-          名前
-        %li.RightHeader__Member
-          まさ  
-    = link_to "#", class: "RightHeader__EditBtn" do
-      Edit
+        = @group.name
+      .RightHeader__MemberList 
+        = "Member:" + @group.users.pluck(:name).join(", ")
+    = link_to edit_group_path(@group) do
+      .RightHeader__EditBtn Edit
   .MessageField
-    .MessageBox
-      .MessageInfo
-        %p.MessageInfo__UserName
-          名前
-        .MessageInfo__Date
-          2020/06/07 22:00
-      .Message
-        %p.Message__Content
-          aaa  
-    .MessageBox
-      .MessageInfo
-        %p.MessageInfo__UserName
-          まさ
-        .MessageInfo__Date
-          2020/06/07 22:00
-      .Message
-        %p.Message__Content
-          MGTL      
+    = render @messages
   .Footer
-    = form_with url: "/posts", method: :post, local: true, class: "Form" do |form|
+    = form_with model: [@group, @message], html: {class: "Form"}, local: true do |f|
       .InputBox 
-        = form.text_field :content, class: "InputBox__Text", placeholder: "type a message"
-        = form.label :image, class: "InputBox__Image" do
-          = icon("far", "image", class: "InputBox__Icon")
-          = form.file_field :image, class: "InputBox__ImageFile"
-      = form.submit "Send", class: "SubmitBtn"    
-      
+        = f.text_field :content, class: 'InputBox__Text', placeholder: 'type a message'
+        = f.label :image, class: 'InputBox__Image' do
+          = icon('far', 'image', class: 'InputBox__Icon')
+          = f.file_field :image, class: 'InputBox__ImageFile'
+      = f.submit 'Send', class: 'SubmitBtn'
