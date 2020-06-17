@@ -11,7 +11,7 @@
   .MessageField
     = render @messages
   .Footer
-    = form_with model: [@group, @message], html: {class: "Form"}, local: true do |f|
+    = form_with model: [@group, @message], html: {class: "Form"}, local: true, id: "new_comment" do |f|
       .InputBox 
         = f.text_field :content, class: 'InputBox__Text', placeholder: 'type a message'
         = f.label :image, class: 'InputBox__Image' do
