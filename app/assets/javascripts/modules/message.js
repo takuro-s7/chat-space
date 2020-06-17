@@ -2,7 +2,7 @@ $(function(){
   function buildHTML(message){
     if (message.image) {
       let html = 
-        `<div class="MessageBox">
+        `<div class="MessageBox" data-message-id=${message.id}>
           <div class="MessageInfo">
             <div class="MessageInfo__UserName">
               ${message.user_name}
@@ -23,7 +23,7 @@ $(function(){
       return html; 
     } else {
       let html = 
-      `<div class="MessageBox">
+      `<div class="MessageBox" data-message-id=${message.id}>
         <div class="MessageInfo">
           <div class="MessageInfo__UserName">
             ${message.user_name}
@@ -41,8 +41,8 @@ $(function(){
       return html;
     };
   }
-  $("#new_comment").on("submit", function(e){
-    e.preventDefault()
+  $(".Form").on("submit", function(e){
+    e.preventDefault();
     let formData = new FormData(this);
     let url = $(this).attr("action");
     $.ajax({
@@ -58,11 +58,12 @@ $(function(){
       let html = buildHTML(data);
       $(".MessageField").append(html);
       $(".Form")[0].reset();
+      $('.MessageField').animate({ scrollTop: $('.MessageField')[0].scrollHeight});
       $(".SubmitBtn").prop("disabled", false);
     })
     .fail(function(){
-          alert("メッセージ送信に失敗しました");
+      alert("メッセージ送信に失敗しました");
+      $(".SubmitBtn").prop("disabled", false);
     });
-    $(".MessageField").animate({ scrollTop: $(".MessageField")[0].scrollHeight});
-  });
-});
+  }); 
+});  
