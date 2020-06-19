@@ -4,6 +4,9 @@ lock "~> 3.14.1"
 set :application, "chat-space"
 set :repo_url, "git@github.com:takuro-s7/chat-space.git"
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
+
+
+
 set :rbenv_type, :user
 set :rbenv_ruby, "2.6.5"
 
@@ -19,6 +22,7 @@ namespace :deploy do
     invoke 'unicorn:restart'
   end
 end               
+
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
